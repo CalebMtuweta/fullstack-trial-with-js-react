@@ -65,6 +65,29 @@ int main() {
     return 0;
 }
 
+void move_to_done(char *task_name) {
+    // Search for task with the given name
+    int index = -1;
+    for (int i = 0; i < num_tasks; i++) {
+        if (strcmp(tasks[i].task_name, task_name) == 0) {
+            index = i;
+            break;
+        }
+    }
+
+    // If task not found, print error message and return
+    if (index == -1) {
+        printf("Task not found\n");
+        return;
+    }
+
+    // Update task state to "done"
+    tasks[index].updated_at = time(NULL);
+    tasks[index].state = "done";
+
+    printf("Task '%s' moved to 'done'\n", task_name);
+    return;
+}
 
 
 
